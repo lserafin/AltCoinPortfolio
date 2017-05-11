@@ -23,7 +23,6 @@ export class AppComponent {
   }
 
   getData(): void {
-    console.log("Call API2");
     this.coinService.getData().then(data => this.data = data);
   }
 
