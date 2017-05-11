@@ -1,3 +1,10 @@
 <h1>
   {{title}}
 </h1>
+<ul class="coins">
+      <li *ngFor="let coin of coins"
+        [class.selected]="coin === selectedCoin"
+        (click)="onSelect(coin)">
+        <span class="badge">{{coin.id}}</span> {{coin.name}}
+      </li>
+    </ul>
