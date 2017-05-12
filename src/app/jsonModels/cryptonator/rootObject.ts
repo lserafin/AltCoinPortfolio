@@ -1,4 +1,4 @@
-import { Ticker } from "app/ticker";
+import { Ticker } from "app/jsonModels/cryptonator/ticker";
 
 export interface RootObject {
         ticker: Ticker;

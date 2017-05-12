@@ -11,3 +11,10 @@
     <div>
       {{ data.ticker.base }} Price: {{ data.ticker.price }} {{ data.ticker.target }}
     </div>
+    <table>
+      <h1>All Coins!</h1>
+  <tr *ngFor="let row of coinRows.rows">
+    <td>{{ row.name }}</td>
+    <td>{{ row.code }}</td>
+  </tr>
+</table>
