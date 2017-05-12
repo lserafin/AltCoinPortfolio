@@ -22,16 +22,16 @@ export class AppComponent {
     this.coinService.getCoins().then(coins => this.coins = coins);
   }
 
-  getData(): void {
-    this.coinService.getData().then(data => this.data = data);
+  getTicker(base: string,target: string): void {
+    this.coinService.getTicker(base,target).then(data => this.data = data);
   }
 
   ngOnInit(): void {
     this.getCoins();
-    this.getData();
   }
 
   onSelect(coin: Coin): void {
     this.selectedCoin = coin;
+    this.getTicker(this.selectedCoin.symbol,'USD');
   }
 }

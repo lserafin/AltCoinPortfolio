@@ -11,10 +11,10 @@ export class CoinService {
     return Promise.resolve(COINS);
   }
 
-  private tickerUrl = 'https://api.cryptonator.com/api/ticker/btc-usd';  // URL to web api
+  private tickerUrl = 'https://api.cryptonator.com/api/ticker/';  // URL to web api
   constructor(private http: Http) { }
-  getData(): Promise<RootObject> {
-    return this.http.get(this.tickerUrl)
+  getTicker(base: string, target: string): Promise<RootObject> {
+    return this.http.get(`${this.tickerUrl}${base.toUpperCase()}-${target.toUpperCase()}`)
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
