@@ -10,7 +10,9 @@ import { CoinRows } from "app/jsonModels/cryptonator/coinRows";
 export class CoinService {
   private tickerUrl = 'https://api.cryptonator.com/api/ticker/';  // URL to web api
   private currenciesUrl = 'https://www.cryptonator.com/api/currencies/';
-  
+  private cryptoCompareCoinListUrl = 'https://www.cryptocompare.com/api/data/coinlist/';
+
+
   constructor(private http: Http) { }
 
   getCoins(): Promise<Coin[]> {
@@ -28,6 +30,13 @@ export class CoinService {
     return this.http.get(`${this.tickerUrl}${base.toUpperCase()}-${target.toUpperCase()}`)
                .toPromise()
                .then(response => response.json())
+               .catch(this.handleError);
+  }
+
+  getCoinsCryptocompare(): Promise<object> {
+    return this.http.get(this.cryptoCompareCoinListUrl)
+               .toPromise()
+               .then(response => response.json().data)
                .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {

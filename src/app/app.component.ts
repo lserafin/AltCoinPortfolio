@@ -17,6 +17,7 @@ export class AppComponent {
   coinRows: CoinRows;
   data: RootObject;
   selectedCoin: Coin;
+  cryptoCompareList: object;
 
   constructor(private coinService: CoinService) { }
 
@@ -28,6 +29,10 @@ export class AppComponent {
     this.coinService.getAllCoins().then(coinRows => this.coinRows = coinRows);
   }
 
+  getCoinsCryptocompare(): void {
+    this.coinService.getCoinsCryptocompare().then(cryptoCompareList => this.cryptoCompareList = cryptoCompareList);
+  }
+
   getTicker(base: string,target: string): void {
     this.coinService.getTicker(base,target).then(data => this.data = data);
   }
@@ -35,6 +40,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.getCoins();
     this.getAllCoins();
+    this.getCoinsCryptocompare();
   }
 
   onSelect(coin: Coin): void {
